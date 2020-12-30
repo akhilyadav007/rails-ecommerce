@@ -89,7 +89,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  RAILS_ENV=production bundle exec rake assets:precompile
+RAILS_ENV=production bundle exec rake assets:precompile
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
