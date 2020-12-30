@@ -1,0 +1,44 @@
+<%= render partial: "store/header" %>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Our Products!</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Shop Now</h1>
+<div class="container">
+    <div class="row">
+<% @instruments.each do |instrument| %>
+
+        <div class="col-sm-3">
+            <div class="card text-center">
+                 <%= image_tag(instrument.image_url(:thumb, class:'card-img-top')) %>
+                <div class="card-block">
+                    <h4 class="card-title"><%= instrument.title %></h4>
+                    <p class="card-text"><%=h truncate(instrument.description, :length => 50) %></p>
+                    <h5 class="card-title">&#8377; <%= instrument.price %> 	</h5>
+                   <center> <%= link_to 'Show', instrument, class:'btn btn-warning m-2' %>
+                   <br>
+                    <% if instrument_autor(instrument)%>
+                      <%= link_to 'Edit', edit_instrument_path(instrument) %></td>
+                      <%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %></center> 
+                </div>
+            </div>
+        </div>
+   
+<% end %>
+ </div>
+</div>
+<br>
+
+
+
+
+
+
+

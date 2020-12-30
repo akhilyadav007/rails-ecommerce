@@ -1,0 +1,50 @@
+<%= render partial: "store/header" %>
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-9" >
+       <div class="pro-img-details">
+                   <%= image_tag(@instrument.image_url(:default)) %>
+              </div>
+    </div>
+    <div class="col-lg-3" >
+      <h4 class="pro-d-title">
+                  <a href="#" class="">
+                     <%= @instrument.title %>
+                  </a>
+              </h4>
+              <p>
+                   <%= @instrument.description %>
+              </p>
+           
+              <div class="m-bot15"> 
+                <strong>Price : </strong>  <%= @instrument.price %><br /><hr>
+                <strong>finish : </strong>  <%= @instrument.finish %><br /><hr>
+                <strong>condition : </strong>  <%= @instrument.condition %><br /><hr>
+                <strong>model : </strong>  <%= @instrument.model %><br /><hr>
+                <strong>brand : </strong>  <%= @instrument.brand %><br /><hr>
+                 <%= button_to 'Add to cart', line_items_path(instrument_id: @instrument), class: 'btn btn-round btn-warning' %>
+               
+                 <% if instrument_autor(@instrument)%>
+                  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    <%= button_to  'Edit', edit_instrument_path(@instrument), class: 'btn btn-round btn-light' %> 
+  </div>
+  <div class="btn-group" role="group" aria-label="Third group">
+<%= button_to  'Back', instruments_path, class: 'btn btn-round btn-light' %>
+  </div>
+  <% end %>
+    
+    </div>
+  </div>
+</div>
+<div class="actions">
+<script class="stripe-button" src="https://checkout.stripe.com/checkout.js"
+                data-amount="<%=@instrument.price*100%>" data-description="<%=@instrument.title%>" data-key="<%= Rails.configuration.stripe[:publishable_key] %>">
+              </script>
+
+</div>
+
+
+
